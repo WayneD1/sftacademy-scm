@@ -41,10 +41,11 @@ public class AccountService {
         accountRepository.save(accountFoundByName);
 
     }
-//
-//    public Account getAccountInfo(String name){
-//
-//    }
+
+    public Account getAccountInfo(String name){
+
+        return accountRepository.findByName(name);
+    }
 
 
 }
