@@ -24,13 +24,23 @@ public class AccountService {
 //
 //    }
 //
-//    public void deposit(Double depositAmount, String name){
-//
-//    }
-//
-//    public void withdraw(Double withDrawAmount, String name){
-//
-//    }
+    public void deposit(Double depositAmount, String name){
+
+        Account accountFoundByName = accountRepository.findByName(name);
+        Double currentBalance = accountFoundByName.getBalance() + depositAmount;
+        accountFoundByName.setBalance(currentBalance);
+        accountRepository.save(accountFoundByName);
+
+    }
+    public void withdraw(Double withDrawAmount, String name){
+        double withdrawCharge = 10.0;
+
+        Account accountFoundByName = accountRepository.findByName(name);
+        Double currentBalance = accountFoundByName.getBalance() - withDrawAmount - withdrawCharge;
+        accountFoundByName.setBalance(currentBalance);
+        accountRepository.save(accountFoundByName);
+
+    }
 //
 //    public Account getAccountInfo(String name){
 //
